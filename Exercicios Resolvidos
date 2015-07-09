@@ -1,0 +1,60 @@
+#-------------------------------------------------------------------------------
+# Name:        module1
+# Purpose:
+#
+# Author:      Carlos Guilherme
+#
+# Created:     08/07/2015
+# Copyright:   (c) Carlos Guilherme 2015
+# Licence:     <your licence>
+#-------------------------------------------------------------------------------
+def maior(lista):
+    if len(lista)==1:
+        return lista[0]
+    else:
+        if lista[0]>lista[1]:
+            lista[1]=lista[0]
+        return maior(lista[1:])
+
+def menor(lista):
+    if len(lista)==1:
+        return lista[0]
+    else:
+        if lista[0]<lista[1]:
+            lista[1]=lista[0]
+        return menor(lista[1:])
+
+
+def inverte(string):
+    if string=="":
+        return ""
+    else:
+        return string[(len(string)-1):(len(string))]+inverte(string[0:len(string)-1])
+
+def palindromo(string):
+    string=string.lower()
+    string=string.replace(" ","")
+    if len(string)==len(string)/2:
+        return True
+    elif string[0]==string[len(string)-1]:
+            return palindromo(string[1:len(string)-1])
+    else:
+        return False
+
+
+def binario(dec):
+    if dec==1:
+        return ("1")
+    else:
+        return binario(int(dec/2))+str(dec%2)
+
+def main():
+    l=[3,2,5,1,0,3,2,]
+    s="Macaquinho"
+    print(inverte(s))
+    print(maior(l))
+    print(menor(l))
+    print(binario(9))
+    print(palindromo("Aceno boneca"))
+if __name__ == '__main__':
+    main()
