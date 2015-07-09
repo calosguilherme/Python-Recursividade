@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# Name:        module1
+# Name:        Recusivo
 # Purpose:
 #
 # Author:      Carlos Guilherme
@@ -8,29 +8,96 @@
 # Copyright:   (c) Carlos Guilherme 2015
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
+##QUESTAO 1
+def somalista(l):
+    if l==[]:
+        return 0
+    else:
+        return l[0]+somalista(l[1:])
+##FIM QUESTAO 1
+#-------------------------------------------------------------------------------
+
+##QUESTAO 3
+def produto(a,b):
+    if b==1:
+        return a
+    else:
+        return a+produto(a,b-1)
+##FIM QUESTAO 3
+#-------------------------------------------------------------------------------
+
+##QUESTAO 4
+def divisao(a,b):
+    aux=1
+    if a<0 and b>0 or b<0 and a>0:
+        aux=-1
+    a=abs(a)
+    b=abs(b)
+    if a==1 or a==0:
+        return 0
+    else:
+        return (1+divisao(a-b,b))*aux
+##FIM QUESTAO 4
+#-------------------------------------------------------------------------------
+
+##Questao 5
+def raizq(n, t, r=0):
+    if r==0:
+        r=n/2.5
+    if abs(n-(r*r))<=t:
+        return r
+    else:
+        return raizq(n,t,r=((n/r)+r)/2.0)
+##FIM QUESTAO 5
+#-------------------------------------------------------------------------------
+
+##Questao 6
+def existe(e,l):
+    if l==[]:
+        return False
+    elif e==l[0]:
+        return True
+    else:
+        return existe(e,l[1:])
+##FIM QUESTAO 6
+#-------------------------------------------------------------------------------
+
+##QUESTAO 7
+def inverte(string):
+    if string=="":
+        return ""
+    else:
+        return string[(len(string)-1):(len(string))]+inverte(string[0:len(string)-1])
+##FIM QUESTAO 7
+#------------------------------------------------------------------------------------
+
+##QUESTAO 9
 def maior(lista):
+    if lista==[]:
+        return None
     if len(lista)==1:
         return lista[0]
     else:
         if lista[0]>lista[1]:
             lista[1]=lista[0]
         return maior(lista[1:])
+##FIM QUESTAO 9
+#-------------------------------------------------------------------------------
 
+##QUESTAO 10
 def menor(lista):
+    if lista==[]:
+        return None
     if len(lista)==1:
         return lista[0]
     else:
         if lista[0]<lista[1]:
             lista[1]=lista[0]
         return menor(lista[1:])
+##FIM QUESTAO 10
+#-------------------------------------------------------------------------------
 
-
-def inverte(string):
-    if string=="":
-        return ""
-    else:
-        return string[(len(string)-1):(len(string))]+inverte(string[0:len(string)-1])
-
+##QUESTAO 11
 def palindromo(string):
     string=string.lower()
     string=string.replace(" ","")
@@ -40,21 +107,31 @@ def palindromo(string):
             return palindromo(string[1:len(string)-1])
     else:
         return False
+##FIM QUESTAO 11
+#-------------------------------------------------------------------------------
 
-
+##QUESTAO 12
 def binario(dec):
     if dec==1:
         return ("1")
     else:
-        return binario(int(dec/2))+str(dec%2)
+        return int(str(binario(int(dec/2)))+str(dec%2))
+##FIM QUESTAO 12
+#-------------------------------------------------------------------------------
 
+#MAIN PARA TESTAR AS FUNCOES FEITAS
 def main():
-    l=[3,2,5,1,0,3,2,]
+    l=[3,2,5,1,0,3,2]
     s="Macaquinho"
     print(inverte(s))
     print(maior(l))
     print(menor(l))
     print(binario(9))
     print(palindromo("Aceno boneca"))
+    print(raizq(4,0.3))
+    print(existe(0,l))
+    print(somalista(l))
+    print(produto(3,4))
+    print(divisao(10,2))
 if __name__ == '__main__':
     main()
